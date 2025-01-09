@@ -3,77 +3,64 @@
 
 ## Overview
 
-This repository contains the interview task for the WerkStudent position in Python. The goal is to collect data from two sample invoices, create an Excel file with two sheets, and generate a CSV file. Additionally, an executable file should be provided to run the code.
+This script processes PDF invoices in a folder, extracts important information (like invoice dates and amounts), organizes the data, and outputs the results in Excel and CSV formats.
 
-## Task Details
+---
 
-1. **Data Extraction**:
-    - Extract specific values from three sample invoices.
-    - For Sample 1, extract the value shown in the provided image.
-    - <img width="289" alt="image" src="https://github.com/user-attachments/assets/0cf000ff-c305-4ffe-beb4-1c02a04d06b6" />
-    - For Samples 2, extract the value shown in the provided image.
-    - <img width="497" alt="image" src="https://github.com/user-attachments/assets/ea6eb368-604d-4dd4-9235-fbc8ec36d275" />
+## **Features**
 
-2. **Excel File Creation**:
-    - Create an Excel file with two sheets:
-        - **Sheet 1**: Contains three columns - File Name, Date (scraped from the document), and Value.
-        - **Sheet 2**: Contains a pivot table with the date and value sum, and also by document name.
+- Extracts **invoice dates** and **amounts** from PDF files.
+- Handles **German** and **English** date formats.
+- Processes tables or plain text in PDFs.
+- Summarizes data into a pivot table grouped by date.
+- Outputs:
+  - A detailed data table.
+  - A pivot table summary.
+  - Saves results as **Excel** and **CSV** files.
 
-3. **CSV File Creation**:
-    - Create a CSV file with all the data, including headers, and use a semicolon (;) as the separator.
+---
 
-4. **Executable File**:
-    - Provide an executable file (.exe) that can run the code if the files are in the same folder.
+## **Setup Instructions**
 
-5. **Fork Creation**:
-    - Create a fork of this repository named `LastName_FirstName_WerkStudent_Python` (e.g., `Shovon_Golam_WerkStudent_Python`).
-    - Upload your code to this branch. No need to submit a pull request; the fork will be checked directly.
+### **1. Prerequisites**
 
-6. **Documentation**:
-    - Include an explanation in the README file that a non-technical person can understand.
-    - Ensure the code is documented so that a technical person can understand it.
+Ensure you have the following Python libraries installed:
 
-7. **Problem Reporting**:
-    - If you face any problems or find it impossible to complete a task, document the issue in the README file of your branch. Explain what the problem was and why you were unable to complete it.
+- `pdfplumber`
+- `pandas`
+- `openpyxl`
 
+### **2. Place Files**
 
-## How It Works
+1. Save the script in a folder.
+2. Place your PDF files in the same folder.
 
-1. **Data Extraction**:
-    - The script reads the sample invoices and extracts the required values.
-    - The extracted data is stored in variables for further processing.
+---
 
-2. **Excel File Creation**:
-    - The script creates an Excel file with two sheets.
-    - Sheet 1 contains the file name, extracted data, and value.
-    - Sheet 2 contains a pivot table summarizing the data by date and document name.
+## **How It Works**
 
-3. **CSV File Creation**:
-    - The script generates a CSV file with the extracted data, including headers, and uses a semicolon as the separator.
+1. **Define Folder and Keywords**
+   - The script looks for PDF files in the same folder as the script.
+   - Keywords like `Gross Amount incl. VAT` and `Total` are used to find relevant amounts.
 
-4. **Executable File**:
-    - An executable file is provided to run the entire code. Ensure the sample invoices are in the same folder as the executable file.
+2. **Extract Information**
+   - The script uses `pdfplumber` to read each PDF.
+   - It extracts:
+     - **Dates**: Found in tables or plain text.
+     - **Amounts**: Associated with the keywords.
 
-5. **Requirements File**:
-    -A requirements.txt file is included to create the environment needed to run the code
+3. **Format Dates**
+   - The script uses `format_date(date_str)` to standardize dates into `mm.dd.yyyy` format.
+   - Supports:
+     - **German** date formats (e.g., `12. März 2023`).
+     - **English** date formats (e.g., `March 12, 2023`).
 
-## Running the Code
+4. **Organize Data**
+   - Extracted data is stored in a Pandas DataFrame.
+   - A pivot table summarizes the total amounts grouped by date.
 
-1. Place the sample invoices in the same folder as the executable file.
-2. Run the executable file to execute the code and generate the Excel and CSV files.
-
-
-## Documentation
-
-- The README file contains a non-technical explanation of the code.
-- The code is documented with comments to help technical users understand its functionality.
-
-## Problem Reporting
-
-- If you face any problems or find it impossible to complete a task, document the issue in the README file of your branch. Explain what the problem was and why you were unable to complete it.
-
-## Timeline
-
-- The time limit for this task is 9 January 2025. 
+5. **Save Outputs**
+   - **Excel File**: Includes detailed data and summary.
+   - **CSV File**: Contains detailed data.
 
 
