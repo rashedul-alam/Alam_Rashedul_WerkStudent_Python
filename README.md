@@ -63,4 +63,5 @@ Ensure you have the following Python libraries installed:
    - **Excel File**: Includes detailed data and summary.
    - **CSV File**: Contains detailed data.
 
-
+## **Problem Reporting **
+  -Due to GitHub's size restrictions, I could not upload the executable file directly to the repository.
